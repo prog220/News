@@ -18,20 +18,9 @@ type News struct {
 	Text  string
 }
 
-const (
-	host     = "localhost"
-	port     = 5432
-	user     = "egorushatenko"        // замени при необходимости
-	password = "pass2004"   // замени на свой пароль
-	dbname   = "news"          // убедись, что база существует
-)
-
 func dbConnect() (*sql.DB, error) {
-	psqlInfo := fmt.Sprintf(
-		"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname,
-	)
-	return sql.Open("postgres", psqlInfo)
+	connStr := "postgresql://postgres:GcuN2WTUM3bhb9LM@db.eindaciqxixgylvblosq.supabase.co:5432/postgres"
+	return sql.Open("postgres", connStr)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
